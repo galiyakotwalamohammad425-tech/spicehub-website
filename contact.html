@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact | SpiceHub</title>
+
+<style>
+
+/* =========================
+   BASIC RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff8ef;
+    color: #222;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+
+    padding: 18px 7%;
+
+    background: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+}
+
+.nav-links a {
+    color: #222;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #d35400;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    text-align: center;
+
+    padding: 90px 20px 70px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #fff3df,
+        #ffd29b
+    );
+}
+
+.hero small {
+    font-size: 13px;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: 60px;
+    margin: 18px 0;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #555;
+}
+
+
+/* =========================
+   MAIN CONTACT AREA
+========================= */
+
+.contact-container {
+
+    max-width: 1100px;
+
+    margin: 60px auto 80px;
+
+    padding: 0 20px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 35px;
+}
+
+
+/* =========================
+   CONTACT INFORMATION
+========================= */
+
+.info-card {
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 25px;
+
+    box-shadow:
+    0 12px 35px
+    rgba(0,0,0,0.08);
+}
+
+.info-card h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.info-item {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    margin-bottom: 28px;
+}
+
+.icon {
+
+    min-width: 50px;
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #fff0dc;
+
+    border-radius: 50%;
+
+    font-size: 23px;
+}
+
+.info-item h3 {
+    margin-bottom: 6px;
+}
+
+.info-item p {
+    color: #666;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   WHATSAPP BUTTON
+========================= */
+
+.whatsapp {
+
+    display: inline-block;
+
+    margin-top: 5px;
+
+    padding: 14px 25px;
+
+    background: #25D366;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 30px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.whatsapp:hover {
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-card {
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 25px;
+
+    box-shadow:
+    0 12px 35px
+    rgba(0,0,0,0.08);
+}
+
+.form-card h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.form-intro {
+    color: #666;
+    margin-bottom: 28px;
+    line-height: 1.5;
+}
+
+
+/* FORM GROUP */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+}
+
+
+/* INPUTS */
+
+input,
+textarea,
+select {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 12px;
+
+    background: #fff;
+
+    font-size: 15px;
+
+    font-family: Arial, sans-serif;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+
+    border-color: #d35400;
+
+    box-shadow:
+    0 0 0 3px
+    rgba(211,84,0,0.1);
+}
+
+textarea {
+
+    min-height: 120px;
+
+    resize: vertical;
+}
+
+
+/* SUBMIT */
+
+.submit-btn {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #222;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+
+    background: #d35400;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   LOCATION
+========================= */
+
+.location {
+
+    max-width: 1100px;
+
+    margin: 0 auto 80px;
+
+    padding: 0 20px;
+}
+
+.location-box {
+
+    min-height: 230px;
+
+    border-radius: 25px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffe7c7,
+        #ffd19a
+    );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+.location-box .pin {
+    font-size: 55px;
+}
+
+.location-box h2 {
+    margin: 10px 0;
+}
+
+.location-box p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.map-button {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 12px 22px;
+
+    background: #222;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 25px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    background: #222;
+
+    color: white;
+}
+
+footer h3 {
+    font-size: 22px;
+}
+
+footer p {
+    color: #ccc;
+    margin-top: 8px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+    nav {
+        padding: 15px 5%;
+    }
+
+    .nav-links {
+        gap: 9px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 70px 20px 55px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+
+        margin-top: 40px;
+    }
+
+    .info-card,
+    .form-card {
+        padding: 28px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        SpiceHub 🍴
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="menu.html">
+            Menu
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <small>
+        GET IN TOUCH
+    </small>
+
+    <h1>
+        Contact Us
+    </h1>
+
+    <p>
+        We'd love to hear from you.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     CONTACT SECTION
+========================= -->
+
+<section class="contact-container">
+
+
+    <!-- INFORMATION CARD -->
+
+    <div class="info-card">
+
+        <h2>
+            Let's Talk
+        </h2>
+
+
+        <div class="info-item">
+
+            <div class="icon">
+                📍
+            </div>
+
+            <div>
+
+                <h3>
+                    Visit Us
+                </h3>
+
+                <p>
+                    SpiceHub Restaurant
+                    <br>
+                    Akola, Maharashtra
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <div class="icon">
+                📞
+            </div>
+
+            <div>
+
+                <h3>
+                    Call Us
+                </h3>
+
+                <p>
+                    +91 98765 43210
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <div class="icon">
+                ✉️
+            </div>
+
+            <div>
+
+                <h3>
+                    Email
+                </h3>
+
+                <p>
+                    hello@spicehub.com
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <div class="icon">
+                🕐
+            </div>
+
+            <div>
+
+                <h3>
+                    Opening Hours
+                </h3>
+
+                <p>
+                    Monday - Sunday
+                    <br>
+                    11:00 AM - 11:00 PM
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a
+        href="https://wa.me/919876543210"
+        class="whatsapp">
+
+            💬 Chat on WhatsApp
+
+        </a>
+
+    </div>
+
+
+    <!-- FORM CARD -->
+
+    <div class="form-card">
+
+        <h2>
+            Send a Message
+        </h2>
+
+        <p class="form-intro">
+            Have a question, want to order food,
+            or make a reservation?
+        </p>
+
+
+        <form
+        onsubmit="sendWhatsApp(); return false;">
+
+
+            <div class="form-group">
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+                <input
+                type="tel"
+                id="phone"
+                placeholder="Enter your phone number"
+                required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="subject">
+                    What can we help with?
+                </label>
+
+                <select id="subject">
+
+                    <option>
+                        General Enquiry
+                    </option>
+
+                    <option>
+                        Food Order
+                    </option>
+
+                    <option>
+                        Table Reservation
+                    </option>
+
+                    <option>
+                        Feedback
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="message">
+                    Your Message
+                </label>
+
+                <textarea
+                id="message"
+                placeholder="Write your message here..."
+                required></textarea>
+
+            </div>
+
+
+            <button
+            type="submit"
+            class="submit-btn">
+
+                Send on WhatsApp →
+
+            </button>
+
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LOCATION
+========================= -->
+
+<section class="location">
+
+    <div class="location-box">
+
+        <div>
+
+            <div class="pin">
+                📍
+            </div>
+
+            <h2>
+                Find SpiceHub
+            </h2>
+
+            <p>
+                Akola, Maharashtra
+                <br>
+                Come visit us and enjoy delicious food!
+            </p>
+
+            <a
+            class="map-button"
+            href="https://www.google.com/maps/search/?api=1&query=Akola+Maharashtra"
+            target="_blank">
+
+                Open in Google Maps
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <h3>
+        SpiceHub 🍴
+    </h3>
+
+    <p>
+        Good Food. Good Mood.
+    </p>
+
+    <p>
+        © 2026 SpiceHub Restaurant
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     WHATSAPP SCRIPT
+========================= -->
+
+<script>
+
+function sendWhatsApp() {
+
+    let name =
+    document.getElementById("name").value;
+
+    let phone =
+    document.getElementById("phone").value;
+
+    let subject =
+    document.getElementById("subject").value;
+
+    let message =
+    document.getElementById("message").value;
+
+
+    /*
+       DEMO RESTAURANT NUMBER
+
+       Replace this number when
+       using the website for a real client.
+    */
+
+    let restaurantNumber =
+    "919876543210";
+
+
+    let text =
+    "Hello SpiceHub!%0A%0A" +
+
+    "Name: " +
+    name +
+    "%0A" +
+
+    "Phone: " +
+    phone +
+    "%0A" +
+
+    "Request: " +
+    subject +
+    "%0A" +
+
+    "Message: " +
+    message;
+
+
+    let whatsappURL =
+    "https://wa.me/" +
+    restaurantNumber +
+    "?text=" +
+    encodeURIComponent(text);
+
+
+    window.location.href =
+    whatsappURL;
+
+}
+
+</script>
+
+
+</body>
+
+</html>
