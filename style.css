@@ -1,0 +1,611 @@
+/* ================================
+   SPICEHUB — PREMIUM RESTAURANT
+   ================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #0d0d0d;
+    color: #f5f1e8;
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* ================================
+   NAVBAR
+   ================================ */
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.logo {
+    font-family: "DM Serif Display", serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #d6a354;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 32px;
+}
+
+.navbar nav a {
+    font-size: 14px;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #d6a354;
+}
+
+.nav-btn {
+    padding: 12px 22px;
+    border: 1px solid #d6a354;
+    color: #d6a354;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background: #d6a354;
+    color: #111;
+}
+
+
+/* ================================
+   HERO
+   ================================ */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 120px 7%;
+    background-image:
+        url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=2000&q=85");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0.45),
+        rgba(0, 0, 0, 0.2)
+    );
+}
+
+.hero-content {
+    position: relative;
+    max-width: 760px;
+    z-index: 2;
+    animation: fadeUp 1.2s ease;
+}
+
+.small-title,
+.section-label {
+    color: #d6a354;
+    font-size: 12px;
+    letter-spacing: 4px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(52px, 7vw, 92px);
+    line-height: 1.05;
+    font-weight: 400;
+}
+
+.hero h1 span {
+    color: #d6a354;
+}
+
+.hero-text {
+    max-width: 570px;
+    margin: 28px 0;
+    color: #ddd;
+    font-size: 16px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
+    display: inline-block;
+    padding: 15px 28px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+}
+
+.primary-btn {
+    background: #d6a354;
+    color: #111;
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    background: #e5b86c;
+}
+
+.secondary-btn {
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.secondary-btn:hover {
+    background: #fff;
+    color: #111;
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    right: 7%;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #ccc;
+}
+
+
+/* ================================
+   FEATURES
+   ================================ */
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #292929;
+}
+
+.feature {
+    background: #111;
+    text-align: center;
+    padding: 55px 30px;
+}
+
+.feature-icon {
+    color: #d6a354;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    font-family: "DM Serif Display", serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    color: #999;
+    font-size: 13px;
+}
+
+
+/* ================================
+   INTRO / ABOUT
+   ================================ */
+
+.intro {
+    padding: 120px 7%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    background: #f2eee6;
+    color: #171717;
+}
+
+.intro-image {
+    height: 600px;
+    overflow: hidden;
+}
+
+.intro-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s;
+}
+
+.intro-image:hover img {
+    transform: scale(1.05);
+}
+
+.intro-content {
+    max-width: 550px;
+}
+
+.intro-content h2,
+.section-heading h2,
+.cta h2 {
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-size: clamp(42px, 5vw, 65px);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.intro-content .section-label {
+    color: #9b6a24;
+}
+
+.intro-content p:not(.section-label) {
+    color: #555;
+    margin-bottom: 18px;
+    font-size: 15px;
+}
+
+.text-btn {
+    display: inline-block;
+    margin-top: 15px;
+    color: #9b6a24;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
+/* ================================
+   MENU
+   ================================ */
+
+.menu-preview {
+    padding: 120px 7%;
+    background: #0d0d0d;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px;
+}
+
+.section-heading h2 {
+    color: #fff;
+}
+
+.section-heading > p:last-child {
+    color: #888;
+    font-size: 14px;
+}
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.food-card {
+    background: #171717;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.food-card:hover {
+    transform: translateY(-8px);
+}
+
+.food-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.food-info {
+    padding: 25px;
+}
+
+.food-info span {
+    color: #d6a354;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.food-info h3 {
+    font-family: "DM Serif Display", serif;
+    font-size: 28px;
+    font-weight: 400;
+    margin: 8px 0;
+}
+
+.food-info p {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.food-info strong {
+    color: #d6a354;
+    font-size: 18px;
+}
+
+
+/* ================================
+   CTA
+   ================================ */
+
+.cta {
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 7%;
+    background-image:
+        linear-gradient(
+            rgba(0,0,0,0.72),
+            rgba(0,0,0,0.72)
+        ),
+        url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1800&q=85");
+    background-size: cover;
+    background-position: center;
+}
+
+.cta-content {
+    max-width: 700px;
+}
+
+.cta h2 {
+    color: #fff;
+}
+
+.cta p:not(.section-label) {
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+
+/* ================================
+   CONTACT
+   ================================ */
+
+.contact {
+    padding: 110px 7%;
+    background: #f2eee6;
+    color: #171717;
+}
+
+.contact .section-heading h2 {
+    color: #171717;
+}
+
+.contact .section-label {
+    color: #9b6a24;
+}
+
+.contact-grid {
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+
+.contact-grid h3 {
+    font-family: "DM Serif Display", serif;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.contact-grid p {
+    color: #666;
+    font-size: 14px;
+}
+
+
+/* ================================
+   FOOTER
+   ================================ */
+
+footer {
+    padding: 60px 7% 30px;
+    text-align: center;
+    background: #090909;
+}
+
+.footer-logo {
+    font-family: "DM Serif Display", serif;
+    font-size: 30px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+footer > p {
+    color: #777;
+    font-size: 13px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 25px 0;
+}
+
+.footer-links a {
+    font-size: 13px;
+    color: #aaa;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #d6a354;
+}
+
+.copyright {
+    padding-top: 25px;
+    border-top: 1px solid #222;
+}
+
+
+/* ================================
+   ANIMATION
+   ================================ */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* ================================
+   TABLET
+   ================================ */
+
+@media (max-width: 900px) {
+
+    .navbar nav {
+        display: none;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .intro-image {
+        height: 450px;
+    }
+
+    .food-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ================================
+   MOBILE
+   ================================ */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 20px 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .nav-btn {
+        padding: 9px 13px;
+        font-size: 11px;
+    }
+
+    .hero {
+        padding: 100px 5%;
+        min-height: 100svh;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero-text {
+        font-size: 14px;
+    }
+
+    .scroll-down {
+        display: none;
+    }
+
+    .feature {
+        padding: 40px 20px;
+    }
+
+    .intro,
+    .menu-preview,
+    .contact {
+        padding: 80px 5%;
+    }
+
+    .intro-image {
+        height: 350px;
+    }
+
+    .intro-content h2,
+    .section-heading h2,
+    .cta h2 {
+        font-size: 42px;
+    }
+
+    .food-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .food-card img {
+        height: 260px;
+    }
+
+    .cta {
+        min-height: 500px;
+        padding: 60px 5%;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+    }
+
+}

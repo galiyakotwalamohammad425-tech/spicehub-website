@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SpiceHub | Book a Table</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="style.css">
+
+
+    <style>
+
+        .booking-page {
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,.78),
+                    rgba(0,0,0,.78)
+                ),
+                url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+            background-position: center;
+
+            padding: 130px 5% 80px;
+        }
+
+
+        .booking-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+
+        .booking-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+
+        .booking-heading h1 {
+            font-family: "DM Serif Display", serif;
+
+            font-size:
+                clamp(50px, 7vw, 80px);
+
+            font-weight: 400;
+
+            color: white;
+        }
+
+
+        .booking-heading p {
+            color: #bbb;
+            margin-top: 10px;
+        }
+
+
+        .booking-card {
+            background: rgba(255,255,255,.97);
+
+            color: #171717;
+
+            padding: 45px;
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,.4);
+        }
+
+
+        .form-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 25px;
+        }
+
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .form-group.full {
+
+            grid-column:
+                1 / -1;
+        }
+
+
+        .form-group label {
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            margin-bottom: 8px;
+
+            letter-spacing: .5px;
+        }
+
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border:
+                1px solid #ddd;
+
+            background: #fafafa;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            font-size: 13px;
+
+            outline: none;
+
+            transition: .3s;
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+
+            border-color: #b78a45;
+
+            background: white;
+        }
+
+
+        .form-group textarea {
+
+            height: 100px;
+
+            resize: vertical;
+        }
+
+
+        .booking-submit {
+
+            margin-top: 30px;
+
+            width: 100%;
+
+            padding: 16px;
+
+            border: none;
+
+            background: #b78a45;
+
+            color: white;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+
+        .booking-submit:hover {
+
+            background: #936a31;
+        }
+
+
+        .booking-submit:disabled {
+
+            opacity: .6;
+
+            cursor: not-allowed;
+        }
+
+
+        .booking-note {
+
+            text-align: center;
+
+            color: #777;
+
+            font-size: 11px;
+
+            margin-top: 18px;
+        }
+
+
+        .success-message {
+
+            display: none;
+
+            margin-top: 25px;
+
+            padding: 18px;
+
+            background: #e8f5e9;
+
+            color: #287b3c;
+
+            text-align: center;
+
+            font-size: 13px;
+        }
+
+
+        .error-message {
+
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 15px;
+
+            background: #ffebee;
+
+            color: #c62828;
+
+            text-align: center;
+
+            font-size: 13px;
+        }
+
+
+        .back-link {
+
+            display: block;
+
+            text-align: center;
+
+            margin-top: 25px;
+
+            color: #d6a354;
+
+            font-size: 13px;
+        }
+
+
+        @media (max-width: 650px) {
+
+            .booking-page {
+
+                padding:
+                    100px 5% 50px;
+            }
+
+
+            .booking-card {
+
+                padding:
+                    25px 20px;
+            }
+
+
+            .form-grid {
+
+                grid-template-columns:
+                    1fr;
+
+                gap: 18px;
+            }
+
+
+            .form-group.full {
+
+                grid-column: auto;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<section class="booking-page">
+
+
+    <div class="booking-container">
+
+
+        <div class="booking-heading">
+
+            <p class="section-label">
+                SPICEHUB
+            </p>
+
+            <h1>
+                Reserve Your Table
+            </h1>
+
+            <p>
+                Good food tastes even better when shared.
+            </p>
+
+        </div>
+
+
+        <div class="booking-card">
+
+
+            <form id="bookingForm">
+
+
+                <div class="form-grid">
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            FULL NAME
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            PHONE NUMBER
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="+91 XXXXX XXXXX"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DATE -->
+
+                    <div class="form-group">
+
+                        <label for="date">
+                            DATE
+                        </label>
+
+                        <input
+                            type="date"
+                            id="date"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- TIME -->
+
+                    <div class="form-group">
+
+                        <label for="time">
+                            TIME
+                        </label>
+
+                        <select
+                            id="time"
+                            required
+                        >
+
+                            <option value="">
+                                Select time
+                            </option>
+
+                            <option>
+                                11:00 AM
+                            </option>
+
+                            <option>
+                                12:00 PM
+                            </option>
+
+                            <option>
+                                01:00 PM
+                            </option>
+
+                            <option>
+                                02:00 PM
+                            </option>
+
+                            <option>
+                                07:00 PM
+                            </option>
+
+                            <option>
+                                08:00 PM
+                            </option>
+
+                            <option>
+                                09:00 PM
+                            </option>
+
+                            <option>
+                                10:00 PM
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- GUESTS -->
+
+                    <div class="form-group">
+
+                        <label for="guests">
+                            NUMBER OF GUESTS
+                        </label>
+
+                        <select
+                            id="guests"
+                            required
+                        >
+
+                            <option value="">
+                                Select guests
+                            </option>
+
+                            <option>
+                                1 Guest
+                            </option>
+
+                            <option>
+                                2 Guests
+                            </option>
+
+                            <option>
+                                3 Guests
+                            </option>
+
+                            <option>
+                                4 Guests
+                            </option>
+
+                            <option>
+                                5 Guests
+                            </option>
+
+                            <option>
+                                6 Guests
+                            </option>
+
+                            <option>
+                                7+ Guests
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- OCCASION -->
+
+                    <div class="form-group">
+
+                        <label for="occasion">
+                            OCCASION
+                        </label>
+
+                        <select id="occasion">
+
+                            <option>
+                                No special occasion
+                            </option>
+
+                            <option>
+                                Birthday
+                            </option>
+
+                            <option>
+                                Anniversary
+                            </option>
+
+                            <option>
+                                Business Dinner
+                            </option>
+
+                            <option>
+                                Family Gathering
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div class="form-group full">
+
+                        <label for="message">
+                            SPECIAL REQUEST
+                        </label>
+
+                        <textarea
+                            id="message"
+                            placeholder="Any special requests?"
+                        ></textarea>
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="booking-submit"
+                    id="submitButton"
+                >
+
+                    CONFIRM BOOKING
+
+                </button>
+
+
+                <div
+                    class="success-message"
+                    id="successMessage"
+                >
+
+                    ✓ Booking request received successfully!
+
+                </div>
+
+
+                <div
+                    class="error-message"
+                    id="errorMessage"
+                >
+
+                    Booking failed. Please try again.
+
+                </div>
+
+
+                <p class="booking-note">
+
+                    Your reservation will be confirmed
+                    by the restaurant.
+
+                </p>
+
+
+            </form>
+
+
+            <a
+                href="index.html"
+                class="back-link"
+            >
+
+                ← Back to SpiceHub
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================================
+     FIREBASE
+     ================================ -->
+
+<script type="module">
+
+
+    import {
+        initializeApp
+    }
+
+    from
+    "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+    import {
+        getDatabase,
+        ref,
+        push,
+        set
+    }
+
+    from
+    "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+
+    /* FIREBASE CONFIG */
+
+    const firebaseConfig = {
+
+        apiKey:
+        "AIzaSyDYpRwC21tnQ7hoywnIyAKshI67wy53WM",
+
+        authDomain:
+        "spicehub-d8128.firebaseapp.com",
+
+        databaseURL:
+        "https://spicehub-d8128-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+        projectId:
+        "spicehub-d8128",
+
+        storageBucket:
+        "spicehub-d8128.firebasestorage.app",
+
+        messagingSenderId:
+        "816485802280",
+
+        appId:
+        "1:816485802280:web:44b190efd735b5c47d701d"
+
+    };
+
+
+    /* INITIALIZE FIREBASE */
+
+    const app =
+        initializeApp(firebaseConfig);
+
+
+    const database =
+        getDatabase(app);
+
+
+    /* FORM */
+
+    const form =
+        document.getElementById(
+            "bookingForm"
+        );
+
+
+    const successMessage =
+        document.getElementById(
+            "successMessage"
+        );
+
+
+    const errorMessage =
+        document.getElementById(
+            "errorMessage"
+        );
+
+
+    const submitButton =
+        document.getElementById(
+            "submitButton"
+        );
+
+
+    /* SUBMIT BOOKING */
+
+    form.addEventListener(
+        "submit",
+        async function(event)
+        {
+
+            event.preventDefault();
+
+
+            successMessage.style.display =
+                "none";
+
+            errorMessage.style.display =
+                "none";
+
+
+            submitButton.disabled =
+                true;
+
+            submitButton.textContent =
+                "SENDING...";
+
+
+            /* GET VALUES */
+
+            const name =
+                document
+                .getElementById("name")
+                .value
+                .trim();
+
+
+            const phone =
+                document
+                .getElementById("phone")
+                .value
+                .trim();
+
+
+            const date =
+                document
+                .getElementById("date")
+                .value;
+
+
+            const time =
+                document
+                .getElementById("time")
+                .value;
+
+
+            const guests =
+                document
+                .getElementById("guests")
+                .value;
+
+
+            const occasion =
+                document
+                .getElementById("occasion")
+                .value;
+
+
+            const message =
+                document
+                .getElementById("message")
+                .value
+                .trim();
+
+
+            try {
+
+
+                /* CREATE BOOKING */
+
+                const bookingRef =
+                    push(
+                        ref(
+                            database,
+                            "bookings"
+                        )
+                    );
+
+
+                /* SAVE TO FIREBASE */
+
+                await set(
+                    bookingRef,
+                    {
+
+                        name: name,
+
+                        phone: phone,
+
+                        date: date,
+
+                        time: time,
+
+                        guests: guests,
+
+                        occasion: occasion,
+
+                        message: message,
+
+                        status: "pending",
+
+                        createdAt:
+                            new Date()
+                            .toISOString()
+
+                    }
+                );
+
+
+                /* SUCCESS */
+
+                successMessage.style.display =
+                    "block";
+
+
+                form.reset();
+
+
+                submitButton.disabled =
+                    false;
+
+                submitButton.textContent =
+                    "CONFIRM BOOKING";
+
+
+            }
+
+            catch(error)
+            {
+
+                console.error(
+                    "Firebase error:",
+                    error
+                );
+
+
+                errorMessage.style.display =
+                    "block";
+
+
+                submitButton.disabled =
+                    false;
+
+                submitButton.textContent =
+                    "CONFIRM BOOKING";
+
+            }
+
+        }
+    );
+
+
+</script>
+
+
+</body>
+
+</html>
