@@ -1,208 +1,600 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SpiceHub Menu</title>
+    <title>SpiceHub | Menu</title>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-body {
-    font-family: Arial, sans-serif;
-    background: #fff8ef;
-    color: #222;
-}
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-nav {
-    padding: 20px 8%;
-    background: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
+    <link rel="stylesheet" href="style.css">
 
-.logo {
-    font-size: 25px;
-    font-weight: bold;
-}
+    <style>
 
-nav a {
-    text-decoration: none;
-    color: #222;
-    font-weight: bold;
-}
+        .menu-page {
+            background: #f2eee6;
+            color: #171717;
+            min-height: 100vh;
+        }
 
-.hero {
-    text-align: center;
-    padding: 80px 20px 50px;
-}
+        .menu-header {
+            padding: 150px 7% 80px;
+            text-align: center;
+            background: #0d0d0d;
+        }
 
-.hero small {
-    letter-spacing: 3px;
-    font-weight: bold;
-}
+        .menu-header h1 {
+            font-family: "DM Serif Display", serif;
+            font-size: clamp(50px, 7vw, 85px);
+            font-weight: 400;
+            color: white;
+        }
 
-.hero h1 {
-    font-size: 55px;
-    margin: 15px 0;
-}
+        .menu-header p {
+            color: #aaa;
+            margin-top: 15px;
+        }
 
-.hero p {
-    color: #666;
-}
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            padding: 45px 5% 20px;
+        }
 
-.menu {
-    padding: 30px 8% 100px;
-}
+        .category-btn {
+            border: 1px solid #b78a45;
+            background: transparent;
+            padding: 11px 22px;
+            cursor: pointer;
+            font-family: "Poppins", sans-serif;
+            font-size: 13px;
+            transition: .3s;
+        }
 
-.cards {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
+        .category-btn:hover,
+        .category-btn.active {
+            background: #b78a45;
+            color: white;
+        }
 
-.card {
-    background: white;
-    width: 290px;
-    padding: 30px;
-    text-align: center;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-.food img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 15px;
-}
-}
+        .menu-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 50px 5% 110px;
+        }
 
-.card h2 {
-    margin: 15px 0 10px;
-}
+        .menu-section {
+            margin-bottom: 80px;
+        }
 
-.card p {
-    color: #666;
-    line-height: 1.5;
-}
+        .menu-section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
 
-.price {
-    display: block;
-    font-size: 22px;
-    margin-top: 15px;
-}
+        .menu-section-title h2 {
+            font-family: "DM Serif Display", serif;
+            font-size: 45px;
+            font-weight: 400;
+        }
 
-.order {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 22px;
-    background: #222;
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
-}
+        .menu-section-title p {
+            color: #777;
+            font-size: 13px;
+        }
 
-footer {
-    text-align: center;
-    padding: 25px;
-    background: #222;
-    color: white;
-}
+        .menu-items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
 
-@media(max-width:600px) {
-    .hero h1 {
-        font-size: 42px;
-    }
-}
-</style>
+        .menu-item {
+            display: flex;
+            gap: 18px;
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #e4ded2;
+            transition: .3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,.08);
+        }
+
+        .menu-item img {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .menu-item-content {
+            flex: 1;
+        }
+
+        .menu-item-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .menu-item h3 {
+            font-family: "DM Serif Display", serif;
+            font-size: 23px;
+            font-weight: 400;
+        }
+
+        .price {
+            color: #a8732d;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .menu-item p {
+            color: #777;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 9px;
+            letter-spacing: 1px;
+            border: 1px solid #bbb;
+            padding: 3px 7px;
+        }
+
+        .veg {
+            color: #287b3c;
+        }
+
+        .nonveg {
+            color: #a33a2a;
+        }
+
+        .back-home {
+            display: inline-block;
+            margin-top: 30px;
+            color: #d6a354;
+            font-size: 13px;
+        }
+
+        @media (max-width: 750px) {
+
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-item img {
+                width: 105px;
+                height: 105px;
+            }
+
+            .menu-item h3 {
+                font-size: 20px;
+            }
+
+        }
+
+        @media (max-width: 450px) {
+
+            .menu-item {
+                gap: 12px;
+                padding: 10px;
+            }
+
+            .menu-item img {
+                width: 90px;
+                height: 90px;
+            }
+
+            .menu-item h3 {
+                font-size: 18px;
+            }
+
+            .menu-item p {
+                font-size: 11px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<nav>
-    <div class="logo">SpiceHub 🍴</div>
-    <a href="index.html">← Home</a>
-</nav>
+<div class="menu-page">
 
-<section class="hero">
-    <small>SPICEHUB RESTAURANT</small>
-    <h1>Our Menu</h1>
-    <p>Fresh food prepared with passion.</p>
-</section>
 
-<section class="menu">
+    <!-- HEADER -->
 
-<div class="cards">
+    <section class="menu-header">
 
-    <div class="card">
-        <div class="food">
-    <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80" alt="Pizza">
+        <p class="section-label">
+            TASTE THE DIFFERENCE
+        </p>
+
+        <h1>Our Menu</h1>
+
+        <p>
+            Carefully crafted dishes made with fresh ingredients
+            and authentic flavours.
+        </p>
+
+        <a href="index.html" class="back-home">
+            ← Back to Home
+        </a>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+
+    <div class="menu-categories">
+
+        <button class="category-btn active">
+            All
+        </button>
+
+        <button class="category-btn">
+            Starters
+        </button>
+
+        <button class="category-btn">
+            Main Course
+        </button>
+
+        <button class="category-btn">
+            Biryani
+        </button>
+
+        <button class="category-btn">
+            Desserts
+        </button>
+
+        <button class="category-btn">
+            Drinks
+        </button>
+
+    </div>
+
+
+    <!-- MENU -->
+
+    <main class="menu-container">
+
+
+        <!-- STARTERS -->
+
+        <section class="menu-section">
+
+            <div class="menu-section-title">
+
+                <p class="section-label">
+                    BEGIN YOUR EXPERIENCE
+                </p>
+
+                <h2>Starters</h2>
+
+                <p>
+                    Small plates, big flavours.
+                </p>
+
+            </div>
+
+
+            <div class="menu-items">
+
+
+                <div class="menu-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=500&q=80"
+                        alt="Chicken Tikka">
+
+                    <div class="menu-item-content">
+
+                        <div class="menu-item-top">
+
+                            <h3>Chicken Tikka</h3>
+
+                            <span class="price">₹249</span>
+
+                        </div>
+
+                        <p>
+                            Tender chicken marinated in aromatic spices
+                            and grilled to perfection.
+                        </p>
+
+                        <span class="tag nonveg">
+                            NON-VEG
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="menu-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80"
+                        alt="Paneer Tikka">
+
+                    <div class="menu-item-content">
+
+                        <div class="menu-item-top">
+
+                            <h3>Paneer Tikka</h3>
+
+                            <span class="price">₹219</span>
+
+                        </div>
+
+                        <p>
+                            Soft paneer cubes grilled with peppers,
+                            onions and Indian spices.
+                        </p>
+
+                        <span class="tag veg">
+                            VEG
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- MAIN COURSE -->
+
+        <section class="menu-section">
+
+            <div class="menu-section-title">
+
+                <p class="section-label">
+                    FROM OUR KITCHEN
+                </p>
+
+                <h2>Main Course</h2>
+
+                <p>
+                    Comforting dishes made for satisfying meals.
+                </p>
+
+            </div>
+
+
+            <div class="menu-items">
+
+
+                <div class="menu-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=500&q=80"
+                        alt="Butter Chicken">
+
+                    <div class="menu-item-content">
+
+                        <div class="menu-item-top">
+
+                            <h3>Butter Chicken</h3>
+
+                            <span class="price">₹299</span>
+
+                        </div>
+
+                        <p>
+                            Creamy tomato gravy with tender chicken
+                            and fragrant Indian spices.
+                        </p>
+
+                        <span class="tag nonveg">
+                            NON-VEG
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="menu-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=500&q=80"
+                        alt="Paneer Butter Masala">
+
+                    <div class="menu-item-content">
+
+                        <div class="menu-item-top">
+
+                            <h3>Paneer Butter Masala</h3>
+
+                            <span class="price">₹249</span>
+
+                        </div>
+
+                        <p>
+                            Rich tomato and butter gravy with
+                            soft paneer.
+                        </p>
+
+                        <span class="tag veg">
+                            VEG
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- BIRYANI -->
+
+        <section class="menu-section">
+
+            <div class="menu-section-title">
+
+                <p class="section-label">
+                    SPICEHUB SIGNATURE
+                </p>
+
+                <h2>Biryani</h2>
+
+                <p>
+                    Fragrant rice layered with aromatic spices.
+                </p>
+
+            </div>
+
+
+            <div class="menu-items">
+
+
+                <div class="menu-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1563379091339-03246963d96c?auto=format&fit=crop&w=500&q=80"
+                        alt="Chicken Biryani">
+
+                    <div class="menu-item-content">
+
+                        <div class="menu-item-top">
+
+                            <h3>Chicken Biryani</h3>
+
+                            <span class="price">₹299</span>
+
+                        </div>
+
+                        <p>
+                            Long-grain basmati rice, tender chicken
+                            and traditional spices.
+                        </p>
+
+                        <span class="tag nonveg">
+                            NON-VEG
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="menu-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=500&q=80"
+                        alt="Veg Biryani">
+
+                    <div class="menu-item-content">
+
+                        <div class="menu-item-top">
+
+                            <h3>Veg Biryani</h3>
+
+                            <span class="price">₹229</span>
+
+                        </div>
+
+                        <p>
+                            Fragrant basmati rice cooked with fresh
+                            vegetables and spices.
+                        </p>
+
+                        <span class="tag veg">
+                            VEG
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- DESSERTS -->
+
+        <section class="menu-section">
+
+            <div class="menu-section-title">
+
+                <p class="section-label">
+                    SWEET FINISH
+                </p>
+
+                <h2>Desserts</h2>
+
+            </div>
+
+
+            <div class="menu-items">
+
+
+                <div class="menu-item">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=500&q=80"
+                        alt="Dessert">
+
+                    <div class="menu-item-content">
+
+                        <div class="menu-item-top">
+
+                            <h3>Chocolate Cake</h3>
+
+                            <span class="price">₹149</span>
+
+                        </div>
+
+                        <p>
+                            Rich, moist chocolate cake served
+                            with creamy chocolate sauce.
+                        </p>
+
+                        <span class="tag veg">
+                            VEG
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
 </div>
-        <h2>Cheesy Pizza</h2>
-        <p>Fresh vegetables and premium cheese.</p>
-        <span class="price">₹249</span>
-        <a href="#" class="order">Order Now</a>
-    </div>
-
-    <div class="card">
-    <div class="food">
-    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Burger">
-</div>
-        <h2>Classic Burger</h2>
-        <p>Juicy burger with fresh vegetables.</p>
-        <span class="price">₹199</span>
-        <a href="#" class="order">Order Now</a>
-    </div>
-
-    <div class="card">
-    <div class="food">
-    <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=600&q=80" alt="Pasta">
-</div>
-        <h2>Creamy Pasta</h2>
-        <p>Rich and creamy Italian-style pasta.</p>
-        <span class="price">₹229</span>
-        <a href="#" class="order">Order Now</a>
-    </div>
-
-    <div class="card">
-        <div class="food">🥗</div>
-        <h2>Fresh Salad</h2>
-        <p>Healthy fresh vegetables and dressing.</p>
-        <span class="price">₹149</span>
-        <a href="#" class="order">Order Now</a>
-    </div>
-
-    <div class="card">
-        <div class="food">🍜</div>
-        <h2>Spicy Noodles</h2>
-        <p>Hot and delicious restaurant-style noodles.</p>
-        <span class="price">₹179</span>
-        <a href="#" class="order">Order Now</a>
-    </div>
-
-    <div class="card">
-        <div class="food">🍰</div>
-        <h2>Chocolate Cake</h2>
-        <p>Soft, rich and delicious chocolate cake.</p>
-        <span class="price">₹129</span>
-        <a href="#" class="order">Order Now</a>
-    </div>
-
-</div>
-
-</section>
-
-<footer>
-    © 2026 SpiceHub Restaurant
-</footer>
 
 </body>
+
 </html>
